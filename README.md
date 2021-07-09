@@ -10,7 +10,10 @@ To begin with the connector currently supports NodeJS (Javascript) Code Snippets
 - Code Engine can be Azure Function, AWS Lambda or any external EndPoints
 - The Repository Contains Code Script to use Google Apps Script as a CodeEngine, But this need some workaround to address the REDIRECT challenge in AppScript API End Point.
 
-# Deployment
+# Sample Screenshot
+
+
+![image-20210709142248319](assets/preview-exec.png)
 
 ### Engine : App Script 
 - google-apps-script-code-engine
