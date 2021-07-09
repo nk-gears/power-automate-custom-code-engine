@@ -1,0 +1,76 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ExecInlineCode",
+    "description": "",
+    "version": "1.0"
+  },
+  "host": "prod-01.australiasoutheast.logic.azure.com",
+  "basePath": "/workflows/ee1646fec574433c86140615a88401d5/triggers/manual/paths",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/invoke": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "ExecCode",
+        "description": "ExecCode",
+        "operationId": "ExecCode",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Javascript Code",
+              "default": "javscript code goes here"
+            }
+          },
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2016-06-01",
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "sp",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "/triggers/manual/run",
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "sig",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "HEBegXIeJGraFbK9o7var5qZ7DcVXq4ZqtXbERbzfQQ",
+            "x-ms-visibility": "internal"
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {},
+  "security": [
+    {
+      "basic_auth": []
+    }
+  ],
+  "tags": []
+}

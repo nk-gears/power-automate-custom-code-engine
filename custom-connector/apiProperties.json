@@ -1,0 +1,32 @@
+{
+  "properties": {
+    "connectionParameters": {},
+    "iconBrandColor": "#007ee5",
+    "capabilities": [],
+    "policyTemplateInstances": [
+      {
+        "templateId": "setqueryparameter",
+        "title": "SetAPIVersion",
+        "parameters": {
+          "x-ms-apimTemplateParameter.name": "sv",
+          "x-ms-apimTemplateParameter.value": "1.0",
+          "x-ms-apimTemplateParameter.existsAction": "override",
+          "x-ms-apimTemplate-operationName": [
+            "ExecCode"
+          ]
+        }
+      },
+      {
+        "templateId": "setheader",
+        "title": "SetHeaderContentType",
+        "parameters": {
+          "x-ms-apimTemplateParameter.name": "Content-Type",
+          "x-ms-apimTemplateParameter.value": "text/plain",
+          "x-ms-apimTemplateParameter.existsAction": "override",
+          "x-ms-apimTemplate-policySection": "Request"
+        }
+      }
+    ],
+    "publisher": "Nirmal Kumar"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "name": "326920c3-9203-44bf-999c-af42493ac196",
+  "id": "/providers/Microsoft.Flow/flows/326920c3-9203-44bf-999c-af42493ac196",
+  "type": "Microsoft.Flow/flows",
+  "properties": {
+    "apiId": "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+    "displayName": "AppScript-CodeEngine",
+    "definition": {
+      "metadata": {
+        "workflowEntityId": null,
+        "processAdvisorMetadata": null,
+        "flowclientsuspensionreason": "None",
+        "flowclientsuspensiontime": null,
+        "creator": {
+          "id": "0b86009d-8763-469a-aa62-e422af0b4de4",
+          "type": "User"
+          
+        },
+        "provisioningMethod": "FromDefinition",
+        "failureAlertSubscription": true,
+        "clientLastModifiedTime": "2021-07-08T05:45:09.5709946Z"
+      },
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {}
+        }
+      },
+      "actions": {
+        "Send_Request_to_Engine": {
+          "runAfter": {},
+          "type": "Http",
+          "inputs": {
+            "method": "POST",
+            "uri": "<!--CHANGE URL HERE FOR GA CODEENGINE -->",
+            "headers": {
+              "Accept": "application/json"
+            },
+            "body": "@triggerBody()"
+          }
+        },
+        "Get_Redirect_Result": {
+          "runAfter": {
+            "Send_Request_to_Engine": [
+              "Failed"
+            ]
+          },
+          "type": "Http",
+          "inputs": {
+            "method": "GET",
+            "uri": "@{outputs('Send_Request_to_Engine')['headers']?['Location']}"
+          }
+        },
+        "Compose": {
+          "runAfter": {
+            "Get_Redirect_Result": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@body('Get_Redirect_Result')"
+        },
+        "Response": {
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "type": "Response",
+          "kind": "Http",
+          "inputs": {
+            "statusCode": 200,
+            "body": "@body('Get_Redirect_Result')"
+          }
+        }
+      }
+    },
+    "connectionReferences": {},
+    "flowFailureAlertSubscribed": false
+  }
+}
